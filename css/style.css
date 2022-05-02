@@ -108,6 +108,15 @@
         height: 450px;
         border-radius: 30px;
     }
+    
+    .card {
+        margin-top: 55%;
+    }
+    .img-nav {
+        margin-left: 76px !important;
+        padding-right: 0 !important;
+        margin-right: 0 !important;
+    }
 
     .fourth-div p {
         font-size: xx-large;
@@ -200,6 +209,10 @@
         margin-left: 30px !important;
     }
 
+    .card h5{
+        font-size: 4.5em !important;
+    }
+
 
     .p-text {
         margin-top: 400px;
@@ -209,7 +222,7 @@
 
     .p-text2 {
         margin-top: 100px;
-        font-size: 5em;
+        font-size: 3em;
         color: rgb(59, 124, 221);
     }
 

@@ -360,7 +360,7 @@ h6,
 }
 .lead {
   font-size: 1.3rem;
-  font-weight: 300;
+  font-weight: 450 !important;
 }
 
 .display-1 {
@@ -374,8 +374,8 @@ h6,
   line-height: 1;
 }
 .display-3 {
-  font-size: 2rem;
-  font-weight: 400;
+  font-size: 1.8rem !important;
+  font-weight: 300;
   line-height: 1;
 }
 .display-4 {

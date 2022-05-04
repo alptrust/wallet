@@ -1,94 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
 <body>
+  <script>
+    var ref = firebase.database().ref();
 
-    ---
-    feature_name: Asynchronous Clipboard API
-    chrome_version: 66
-    feature_id: 5861289330999296
-    local_css_files: ['demo.css']
-    ---
-    
-    <h3>Background</h3>
-    <p>This is a demonstration of the text portions of the <a href="https://w3c.github.io/clipboard-apis/">Asynchronous Clipboard API</a>, shipping in Chrome 66.</p>
-    <p><strong>Note:</strong> the permissions API requires that you enable the Experimental Web Platform Features flag in Chrome: <code>chrome://flags/#enable-experimental-web-platform-features</code></p>
-    
-    <!-- {% capture initial_output_content %} -->
-    <textarea id="out" placeholder="Text to copy"></textarea>
-    <button id="copy">Copy</button>
-    <button id="paste">Paste</button>
-    <h4>Permissions:</h4>
-    <button data-permission="clipboard-read">Read</button>
-    <button data-permission="clipboard-write">Write</button>
-    <!-- {% endcapture %}
-    {% include output_helper.html initial_output_content=initial_output_content %}
-    
-    {% include js_snippet.html filename='demo.js' %} -->
-
-    <script>
-        /** Write contents of the textarea to the clipboard when clicking "Copy" */
-        document.querySelector('#copy').addEventListener('click', () => {
-        navigator.clipboard.writeText(document.querySelector('#out').value)
-            .then(() => {
-            ChromeSamples.log('Text copied.');
-            })
-            .catch(() => {
-            ChromeSamples.log('Failed to copy text.');
-            });
-        });
-
-        /** Read from clipboard when clicking the Paste button */
-        document.querySelector('#paste').addEventListener('click', () => {
-        navigator.clipboard.readText()
-            .then(text => {
-            document.querySelector('#out').value = text;
-            ChromeSamples.log('Text pasted.');
-            })
-            .catch(() => {
-            ChromeSamples.log('Failed to read from clipboard.');
-            });
-        });
-
-        /** Watch for pastes */
-        document.addEventListener('paste', e => {
-        e.preventDefault();
-        navigator.clipboard.getText().then(text => {
-            ChromeSamples.log('Updated clipboard contents: ' + text);
-        });
-        });
-
-        /** Set up buttons to request permissions and display status: */
-        document.querySelectorAll('[data-permission]').forEach(btn => {
-        const permission = btn.getAttribute('data-permission');
-        navigator.permissions.query({name: permission})
-            .then(status => {
-            status.onchange = () => {
-                btn.setAttribute('data-state', status.state);
-            };
-            status.onchange();
-            })
-            .catch(() => {
-            btn.setAttribute('data-state', 'unavailable');
-            btn.title = 'Permissions API unavailable.';
-            });
-        btn.addEventListener('click', () => {
-            Promise.resolve().then(() => {
-            return navigator.permissions.request({name: permission});
-            })
-            .then(status => {
-                ChromeSamples.log('Permission: ' + status.state);
-            })
-            .catch(err => {
-                ChromeSamples.log('Permission request failed: ' + err);
-            });
-        });
-        });
-    </script>
+    ref.on("value", function(snapshot) {
+      console.log(snapshot.val());
+    }, function (error) {
+      console.log("Error: " + error.code);
+    });
+  </script>
 </body>
 </html>

